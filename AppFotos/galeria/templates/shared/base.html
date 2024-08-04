@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapParty😎 - Fotos y Notas de Fiesta</title>
+    <!-- Bootstrap CSS -->
+    {% load static%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+       body {
+        color: rgb(29, 26, 26);
+        margin: 0;
+        padding: 0;
+    }
+
+    .background-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+        pointer-events: none; /* Evita la interferencia del video con los eventos del ratón */
+    }
+        .navbar-brand {
+            font-family: 'Arial Black', sans-serif;
+            /* Fuente llamativa */
+            font-size: 24px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fuente legible */
+            font-size: 18px;
+        }
+
+    
+        .btn-primary {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4949;
+            border-color: #ff4949;
+        }
+
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="{% static 'img/fondo.mp4' %}" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video.
+    </video>
+    <!-- Íconos dispersos -->
+
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#">SnapParty😎</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'lista_tareas' %}">Tareas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'crear_tarea' %}" class="btn btn-block nav-link">Crear Nueva Tarea</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS y otros scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

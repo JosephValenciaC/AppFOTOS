@@ -1,0 +1,52 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<style>
+    .card {
+        background: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+        backdrop-filter: blur(10px); /* Efecto de desenfoque */
+        -webkit-backdrop-filter: blur(10px); /* Efecto de desenfoque para Safari */
+        border: none; /* Sin borde */
+    }
+    .card-body {
+        color: white; /* Color del texto blanco */
+    }
+    .card-title {
+        font-size: 1.5rem; /* Tamaño de la fuente del título */
+        margin-bottom: 10px;
+    }
+    .card-text {
+        font-size: 1rem; /* Tamaño de la fuente del texto */
+    }
+    .btn-primary {
+        background-color: #007bff; /* Color del botón */
+        border-color: #007bff; /* Color del borde del botón */
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for tarea in tareas %}
+        <div class="col">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tarea.nombre }}</h5>
+                    <p class="card-text">Descripción de la tarea: {{ tarea.descripcion }}</p>
+                    <a href="{% url 'detalle_tarea' tarea_id=tarea.id %}" class="btn btn-primary">Ver fotos</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">No hay tareas disponibles.</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
